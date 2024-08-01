@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #box1 {
+            width: 1300px;
+            height: 500px;
+            border: 1px solid #000;
+            position: relative;
+        }
+
+        #lbl1 {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 5px;
+        }
+
+        .bubble {
+            height: 50px;
+            width: 50px;
+            background-color: pink;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Get X and Y position of click event</h1>
+    <h2>Click on this box</h2>
+    <div id="box1">
+        <label id="lbl1"></label>
+    </div>
+    <script>
+
+        // window.onload = function () {
+        //     var Timer1 = undefined;
+        //    function TimerFun(){
+        //     b1.style.top = (parseInt(b1.style.top) + 1) + "px";
+
+        //    }
+        //     if (Timer1 == undefined) {
+        //         Timer1 = setInterval(TimerFun, 10);
+        //     }
+
+
+        // }
+
+        document.getElementById("box1").addEventListener("click", function (event) {
+            var l1 = document.getElementById("lbl1");
+
+
+
+            var xc = event.clientX;
+            var yc = event.clientY;
+            l1.innerHTML = "X: " + event.clientX + " Y: " + event.clientY;
+
+
+            var b1 = document.createElement("span");
+            b1.className = "bubble box";
+            var xposition = event.clientX - (b1.clientWidth / 2);
+            var yposition = event.clientY - (b1.clientHeight / 2);
+            b1.style.left = xposition + "px";
+            b1.style.top = yposition + "px";
+            document.getElementById("box1").appendChild(b1);
+
+
+            var timer = setInterval(function () {
+        var currentTop = parseInt(b1.style.top);
+        b1.style.top = (currentTop - 1) + "px";
+        });
+
+
+
+
+
+
+
+
+        });
+    </script>
+</body>
+
+</html>
